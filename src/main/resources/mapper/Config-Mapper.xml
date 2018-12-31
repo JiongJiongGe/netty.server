@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.netty.netty.mapper.ConfigMapper">
+
+    <sql id="tableName">
+        t_config
+    </sql>
+
+    <sql id="selectColumns">
+        *
+    </sql>
+
+    <select id = "geConfig" resultType="com.netty.netty.domain.ConfigDo">
+        SELECT
+        <include refid="selectColumns" />
+        FROM
+        <include refid="tableName" />
+        ORDER BY id DESC
+        LIMIT 1
+    </select>
+
+    <insert id="insert" parameterType="com.netty.netty.domain.ConfigDo">
+        INSERT INTO
+        <include refid="tableName" />
+        (`config_message`)
+        VALUES
+        (#{configMessage})
+    </insert>
+</mapper>
